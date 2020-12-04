@@ -2,10 +2,13 @@ import cv2
 import numpy as np
 img = cv2.imread('1.jpg')
 
-cv2.imshow('oiw',img)
+h,w=img.shape[:2]
+start_row,start_col = int(h*.25),int(w*.25)
+end_row,end_col = int(h*.9),int(w*.5)
+cropped = img[start_row:end_row,start_col:end_col]
 
+cv2.imshow('original',img)
 cv2.waitKey(0)
-img_scale = cv2.resize(img,None,fx=2,fy = 2,interpolation=cv2.INTER_CUBIC)
-cv2.imshow("new",img_scale)
+cv2.imshow('cropped',cropped)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
